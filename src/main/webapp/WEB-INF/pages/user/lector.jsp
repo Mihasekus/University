@@ -11,14 +11,11 @@
 <body>
 <tbody>
 <tr>
-    <td>
+    <td width="25%">
         <%@ include file="./menu.jsp" %>
     </td>
-    <p><br>
 
-    <p><br>
-    </p>
-    <td>
+    <td width="65%">
         <table>
 
             <c:forEach items="${Lector}" var="Lector">

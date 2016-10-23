@@ -20,13 +20,16 @@ public class ArchiveControllerAdmin {
     public ModelAndView ArchiveTable(ModelMap modelMap, HttpServletRequest request) {
         ModelAndView showArchive = new ModelAndView("admin/archiveAdmin");
         showArchive.addObject("Archive", archiveService.getArchiveByStatus("active"));
+        showArchive.addObject("dropdown",archiveService.getArchive());
+        showArchive.addObject("menuIndex",request.getParameter("point"));
         return showArchive;
     }
 
     @RequestMapping("/ArchiveAdminTableSearch")
     public ModelAndView searchTable(ModelMap modelMap, HttpServletRequest request){
         ModelAndView searchTable=new ModelAndView("user/ArchiveTable");
-        searchTable.addObject("Archive",archiveService.searchArchive(request.getParameter("search")));
+        searchTable.addObject("Archive",archiveService.searchArchive(request.getParameter("searchStud"),request.getParameter("searchLect"),request.getParameter("course"),request.getParameter("mark")));
+        searchTable.addObject("menuIndex",request.getParameter("point"));
         return searchTable;
     }
 }

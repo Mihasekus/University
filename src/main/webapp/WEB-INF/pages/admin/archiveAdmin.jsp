@@ -10,18 +10,12 @@
 <table>
     <tbody>
     <tr>
-        <td>
+        <td width="25%">
             <%@ include file="./menuAdmin.jsp" %>
         </td>
-        <p><br>
-
-        <p><br>
-        </p>
-
-
-        <td><form:form action="/archiveAdmin.html" commandName="Archive">
+        <td width="45%"><form:form action="/archiveAdmin.html" commandName="Archive">
             <c:if test="${not empty Archive}">
-                <table>
+                <table border="2">
                 <tr>
                     <th>Student ID</th>
                     <th>Lector ID</th>
@@ -42,7 +36,7 @@
             </c:if>
             </table>
         </form:form></td>
-        <td>
+        <td >
             <div id="search_form">
                 <form class="form-search" method="post" action='<c:url value="/ArchiveAdminTableSearch.html" />' >
                     <input class="form-control" type="text" name="search" placeholder="Поиск" required autofocus/>

@@ -15,13 +15,9 @@
     <td>
         <%@ include file="./menu.jsp" %>
     </td>
-    <p><br>
-
-    <p><br>
-    </p>
 
     <td>
-        <table>
+        <table >
 
             <c:forEach items="${Student}" var="Student">
 

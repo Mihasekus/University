@@ -17,9 +17,10 @@ public class CoursesController {
     private CoursesService coursesService;
 
     @RequestMapping(value = "/CoursesTable.html", method = RequestMethod.GET)
-    public ModelAndView CoursesTable(ModelMap modelMap) {
+    public ModelAndView CoursesTable(ModelMap modelMap,HttpServletRequest request) {
         ModelAndView coursesTable = new ModelAndView("user/CoursesTable");
         coursesTable.addObject("CoursesTable", coursesService.getCoursesByStatus("active"));
+        coursesTable.addObject("menuIndex",request.getParameter("point"));
         return coursesTable;
     }
 
@@ -28,6 +29,7 @@ public class CoursesController {
         ModelAndView showCourse = new ModelAndView("user/course");
         showCourse.addObject("id", request.getParameter("id"));
         showCourse.addObject("Course", coursesService.getCourses());
+        showCourse.addObject("menuIndex",request.getParameter("point"));
         return showCourse;
 
     }
@@ -35,6 +37,7 @@ public class CoursesController {
     public ModelAndView searchTable(ModelMap modelMap, HttpServletRequest request){
         ModelAndView searchTable=new ModelAndView("user/CoursesTable");
         searchTable.addObject("CoursesTable",coursesService.searchCourses(request.getParameter("search")));
+        searchTable.addObject("menuIndex",request.getParameter("point"));
         return searchTable;
     }
 }

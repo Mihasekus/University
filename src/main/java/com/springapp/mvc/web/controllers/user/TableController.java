@@ -7,15 +7,18 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class TableController {
     @Autowired
     private StudentService studentService;
 
     @RequestMapping("/StudentTable.html")
-    public ModelAndView printTable(ModelMap model) {
+    public ModelAndView printTable(ModelMap model, HttpServletRequest request) {
         ModelAndView showTable = new ModelAndView("user/StudentTable");
         showTable.addObject("Student", studentService.getStudentsByStatus("active"));
+        showTable.addObject("menuIndex",request.getParameter("point"));
         return showTable;
     }
 

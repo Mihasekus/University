@@ -9,12 +9,32 @@
     <form name="f1" method="post" action="/addMark.html" id="f1">
         <table>
             <tr>
-                <td class="LectorId">Lector Id :</td>
-                <td><input type="text" name="lectorId" value=""/></td>
-                <td class="StudentId">Student Id :</td>
-                <td><input type="text" name="studentId" value=""/></td>
+            <td width="25%">
+                <%@ include file="./menuAdmin.jsp" %>
+            </td>
+                <td>
+            <table>
+                <td>
+            <tr>
+                <td class="LectorId">Lector:</td>
+                <td>
+                    <select name="lector">
+                    <c:forEach items="${lectors}" var="lector">
+                        <option value="${lector.id}">${lector.name} </option>
+                    </c:forEach>
+                </select></td>
+                <td class="StudentId">Student:</td>
+                <td>  <select name="student">
+                    <c:forEach items="${students}" var="student">
+                        <option value="${student.id}">${student.name} </option>
+                    </c:forEach>
+                </select></td>
                 <td class="CourseId">Course Id :</td>
-                <td><input type="text" name="courseId" value=""/></td>
+                <td>  <select name="Course">
+                    <c:forEach items="${courses}" var="course">
+                        <option value="${course.id}">${course.name} </option>
+                    </c:forEach>
+                </select></td>
                 <td class="Mark">Mark :</td>
                 <td><input type="text" name="mark" value=""/></td>
                 </td>
@@ -25,6 +45,8 @@
                                                                    style="font-size:14px ; "/> </a>
                 </td>
             </tr>
+            </table>
+            </td> </tr>
         </table>
     </form>
 </div>

@@ -1,12 +1,11 @@
 package com.springapp.mvc.web.controllers.admin;
 
-import com.springapp.mvc.model.domain.*;
+import com.springapp.mvc.model.domain.Lectors;
 import com.springapp.mvc.model.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +27,7 @@ public class DeleteController {
     public ModelAndView delStudent(ModelMap modelMap, HttpServletRequest request) {
         ModelAndView delStudent = new ModelAndView("admin/studentTableAdmin");
         studentService.changeStatus(Integer.valueOf(request.getParameter("id")).intValue(), "inactive");
+        delStudent.addObject("menuIndex",request.getParameter("point"));
         return delStudent;
     }
 
@@ -36,6 +36,7 @@ public class DeleteController {
         ModelAndView delLector = new ModelAndView("admin/lectorsTableAdmin");
         Lectors lectors = new Lectors();
         lectorsService.changeStatus(Integer.valueOf(request.getParameter("id")).intValue(), "inactive");
+        delLector.addObject("menuIndex",request.getParameter("point"));
         return delLector;
     }
 

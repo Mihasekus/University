@@ -22,7 +22,7 @@ public class Archive {
     @Column(name = "status")
     private String status;
     @Column(name = "mark")
-    private String mark;
+    private int mark;
 
     public String getStatus() {
         return status;
@@ -40,11 +40,11 @@ public class Archive {
         this.id = id;
     }
 
-    public String getMark() {
+    public int getMark() {
         return mark;
     }
 
-    public void setMark(String mark) {
+    public void setMark(int mark) {
         this.mark = mark;
     }
 

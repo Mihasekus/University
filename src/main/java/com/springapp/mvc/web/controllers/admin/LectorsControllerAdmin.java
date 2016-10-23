@@ -19,6 +19,7 @@ public class LectorsControllerAdmin {
     public ModelAndView CoursesTable(ModelMap modelMap, HttpServletRequest request) {
         ModelAndView lectorsTable = new ModelAndView("admin/lectorsTableAdmin");
         lectorsTable.addObject("LectorsTable", lectorsService.getLectorsByStatus("active"));
+        lectorsTable.addObject("menuIndex",request.getParameter("point"));
         return lectorsTable;
     }
 
@@ -28,6 +29,7 @@ public class LectorsControllerAdmin {
         showPerson.addObject("id", request.getParameter("id"));
         showPerson.addObject("Lector", lectorsService.getLectors());
         System.out.println(request.getParameter("id"));
+        showPerson.addObject("menuIndex",request.getParameter("point"));
         return showPerson;
 
     }

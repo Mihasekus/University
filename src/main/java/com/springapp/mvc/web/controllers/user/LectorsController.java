@@ -20,6 +20,7 @@ public class LectorsController {
     public ModelAndView CoursesTable(ModelMap modelMap, HttpServletRequest request) {
         ModelAndView lectorsTable = new ModelAndView("user/LectorsTable");
         lectorsTable.addObject("LectorsTable", lectorsService.getLectorsByStatus("active"));
+        lectorsTable.addObject("menuIndex",request.getParameter("point"));
         return lectorsTable;
     }
 
@@ -28,6 +29,7 @@ public class LectorsController {
         ModelAndView showPerson = new ModelAndView("user/lector");
         showPerson.addObject("id", request.getParameter("id"));
         showPerson.addObject("Lector", lectorsService.getLectors());
+        showPerson.addObject("menuIndex",request.getParameter("point"));
         System.out.println(request.getParameter("id"));
         return showPerson;
 
@@ -36,6 +38,7 @@ public class LectorsController {
     public ModelAndView searchTable(ModelMap modelMap, HttpServletRequest request){
         ModelAndView searchTable=new ModelAndView("user/LectorsTable");
         searchTable.addObject("LectorsTable",lectorsService.searchLector(request.getParameter("search")));
+        searchTable.addObject("menuIndex",request.getParameter("point"));
         return searchTable;
     }
 

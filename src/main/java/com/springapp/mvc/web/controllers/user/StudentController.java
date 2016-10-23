@@ -21,6 +21,7 @@ public class StudentController {
         showPerson.addObject("id", request.getParameter("id"));
         showPerson.addObject("Student", studentService.getStudentsByStatus("active"));
         System.out.println(request.getParameter("id"));
+        showPerson.addObject("menuIndex",request.getParameter("point"));
         return showPerson;
 
     }
@@ -28,6 +29,7 @@ public class StudentController {
     public ModelAndView searchTable(ModelMap modelMap, HttpServletRequest request){
         ModelAndView searchTable=new ModelAndView("user/StudentTable");
         searchTable.addObject("Student", studentService.searchStudents(request.getParameter("search")));
+        searchTable.addObject("menuIndex",request.getParameter("point"));
         return searchTable;
     }
 }

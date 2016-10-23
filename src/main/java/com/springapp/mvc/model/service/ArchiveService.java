@@ -22,8 +22,8 @@ public class ArchiveService {
     public List<Archive> getArchiveByStatus(String status) {
         return archiveDAO.getArchiveByStatus(status);
     }
-    public List<Archive> searchArchive(String search) {
-        return archiveDAO.searchArchive(search);
+    public List<Archive> searchArchive(String Stud,String Lect,String course,String mark) {
+        return archiveDAO.searchArchive(Stud,Lect,course,mark);
     }
     public void setMark(Archive archive) {
         archiveDAO.addNew(archive);

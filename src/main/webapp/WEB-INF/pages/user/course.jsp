@@ -12,15 +12,12 @@
 <table>
     <tbody>
     <tr>
-        <td>
+        <td width="25%">
             <%@ include file="./menu.jsp" %>
         </td>
-        <p><br>
 
-        <p><br>
-        </p>
         <table>
-            <td>
+            <td width="65%">
                 <c:forEach items="${Course}" var="Course">
 
                 <c:if test="${Course.id eq id}">

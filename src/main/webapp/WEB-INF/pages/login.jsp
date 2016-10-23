@@ -27,7 +27,7 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
     </form>
 </div>
-<a href="/menu.html"> Press to see menu </a>
+<a href="/menu.html" > Press to see menu </a>
 
 
 </body>

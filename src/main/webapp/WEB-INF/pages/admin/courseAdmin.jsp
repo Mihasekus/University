@@ -12,10 +12,10 @@
 <table>
     <tbody>
     <tr>
-        <td>
+        <td width="25%">
             <%@ include file="./menuAdmin.jsp" %>
         </td>
-        <td>
+        <td width="45%">
             <table>
 
                 <c:forEach items="${Course}" var="Course">

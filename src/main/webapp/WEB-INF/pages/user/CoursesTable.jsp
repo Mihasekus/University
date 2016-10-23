@@ -10,14 +10,13 @@
 <table>
     <tbody>
     <tr>
-        <td>
+        <td width="25%">
             <%@ include file="./menu.jsp" %>
         </td>
-        Courses
 
-        <td><form:form action="/CoursesTable.html" commandName="CoursesTable">
+        <td ><form:form action="/CoursesTable.html" commandName="CoursesTable">
             <c:if test="${not empty CoursesTable}">
-                <table>
+                <table border="2">
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -34,7 +33,7 @@
                 </table>
             </c:if>
         </form:form></td>
-        <td>
+        <td width="5%">
             <div id="search_form">
                 <form class="form-search" method="post" action='<c:url value="/CoursesTableSearch.html" />' >
                     <input class="form-control" type="text" name="search" placeholder="Поиск" required autofocus/>

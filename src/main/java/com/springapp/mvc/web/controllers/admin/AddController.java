@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 
 @Controller
 public class AddController {
@@ -28,6 +28,8 @@ public class AddController {
     @RequestMapping(value = "/showAddStudent.html")
     public ModelAndView showAddStudent(ModelMap modelMap, HttpServletRequest request) {
         ModelAndView addStudent = new ModelAndView("admin/addStudent");
+        addStudent.addObject("roles",fillRoles());
+        addStudent.addObject("menuIndex",request.getParameter("point"));
         return addStudent;
     }
 
@@ -45,12 +47,15 @@ public class AddController {
         userService.setUser(user);
         student.setUser(userService.getUser(request.getParameter("UserLogin"), request.getParameter("UserPassword")));
         studentService.setStudent(student);
+        addStudent.addObject("menuIndex",request.getParameter("point"));
         return addStudent;
     }
 
     @RequestMapping(value = "/showAddLector.html")
     public ModelAndView showAddLector(ModelMap modelMap, HttpServletRequest request) {
         ModelAndView addLector = new ModelAndView("admin/addLector");
+        addLector.addObject("roles",fillRoles());
+        addLector.addObject("menuIndex",request.getParameter("point"));
         return addLector;
     }
 
@@ -67,6 +72,7 @@ public class AddController {
         userService.setUser(user);
         lectors.setUser(userService.getUser(request.getParameter("UserLogin"), request.getParameter("UserPassword")));
         lectorsService.setLectors(lectors);
+        addLector.addObject("menuIndex",request.getParameter("point"));
         return addLector;
     }
 
@@ -82,12 +88,17 @@ public class AddController {
         Courses courses = new Courses();
         courses.setName(request.getParameter("courseName"));
         coursesService.setCourses(courses);
+        addCourse.addObject("menuIndex",request.getParameter("point"));
         return addCourse;
     }
 
     @RequestMapping(value = "/showAddMark.html")
     public ModelAndView showAddMark(ModelMap modelMap, HttpServletRequest request) {
         ModelAndView addMark = new ModelAndView("admin/addMark");
+        addMark.addObject("students",studentService.getStudents());
+        addMark.addObject("courses", coursesService.getCourses());
+        addMark.addObject("lectors",lectorsService.getLectors());
+        addMark.addObject("menuIndex",request.getParameter("point"));
         return addMark;
     }
 
@@ -98,9 +109,15 @@ public class AddController {
         archive.setCourse(coursesService.getCourse(Integer.valueOf(request.getParameter("courseId")).intValue()));
         archive.setLector(lectorsService.getLector(Integer.valueOf(request.getParameter("lectorId")).intValue()));
         archive.setStudent(studentService.getStudent(Integer.valueOf(request.getParameter("studentId")).intValue()));
-        archive.setMark(request.getParameter("mark"));
+        archive.setMark(Integer.valueOf(request.getParameter("mark")));
         archiveService.setMark(archive);
+        addMark.addObject("menuIndex",request.getParameter("point"));
         return addMark;
     }
-
+    private ArrayList fillRoles(){
+        ArrayList roles=new ArrayList();
+        roles.add("user");
+        roles.add("admin");
+        return roles;
+    }
 }
